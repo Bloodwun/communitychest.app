@@ -28,7 +28,7 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         local-dir: . # Assuming you want to deploy the entire repo
-        remote-dir: /home/outofcom/communitychest.app # Deploy to this directory
+        server-dir: /home/outofcom/communitychest.app # Deploy to this directory
         
     - name: Deploy via SSH
       uses: appleboy/ssh-action@v0.1.4
