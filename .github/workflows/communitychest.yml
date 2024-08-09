@@ -27,17 +27,3 @@ jobs:
         server: ${{ secrets.SERVER }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
-        local-dir: ./ # Assuming you want to deploy the entire repo
-        server-dir: /home/outofcom/communitychest.app/ # Deploy to this directory
-        
-    - name: Deploy via SSH
-      uses: appleboy/ssh-action@v0.1.4
-      with:
-        host: ${{ secrets.SERVER }}
-        username: ${{ secrets.SSH_USER }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        script: |
-          cd /home/outofcom/communitychest.app
-          php artisan migrate --force
-          php artisan cache:clear
-          php artisan config:cache
