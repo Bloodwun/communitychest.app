@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -23,7 +24,10 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
-
+    public function showRegistrationForm($id)
+    {
+        return view('auth.register')->with(['role_id' => $id]);
+    }
     /**
      * Where to redirect users after registration.
      *
@@ -86,6 +90,7 @@ class RegisterController extends Controller
             'phone_number' => $data['phone_number'],
             'address' => $data['address'],
             'referral_code' => $data['referral_code']??null,
+            'parent_user_id' =>(Auth::user() != null ) ? Auth::user()->id : null
 
         ]);
 			session()->flash('success', 'Registeration Successfully.');

@@ -20,6 +20,7 @@ class User extends Authenticatable
         'id',
         'first_name',
         'last_name',
+		'middle_name',
         'user_name',
         'phone_number',
         'zip_code',
@@ -30,7 +31,10 @@ class User extends Authenticatable
         'email',
         'refresh_token',
 		'role_id',
-		'password'
+		'password',
+		'state',
+		'city',
+		'parent_user_id'
     ];
 
     /**

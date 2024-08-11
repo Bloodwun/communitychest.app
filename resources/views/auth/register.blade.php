@@ -102,12 +102,27 @@
                                         <div class="mb-3">
                                             <label for="Role" class="form-label">Role*</label>
                                             <select class="form-control" name = "role_id">
-                                            <option value = "2">Staff</option>
-                                            <option value = "3">Business</option>
-                                            <option value = "4">Realtor/LeaseAgent</option>
-                                            <option value = "5">New Resident 
-                                            </option>
-                                            </select>
+                                           
+
+                                            @if($role_id == 4)
+                                            {
+                                                <option value = "4">Realtor/LeaseAgent</option>
+                                            }
+                                            
+                                            @elseif($role_id == 3)
+                                            {
+                                                <option value = "3">Business</option>
+                                            }
+                                            @elseif($role_id == 2)
+                                            {
+                                                <option value = "2">Staff</option>
+                                            }
+                                            @elseif($role_id == 5)
+                                            {
+                                            <option selected value="5">Resident </option>
+                                            }
+                                            @endif
+                                        </select>
                                             @error('role')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>

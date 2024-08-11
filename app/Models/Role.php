@@ -18,6 +18,10 @@ class Role extends Model
         'name',
 		'status',
     ];
+    const RESIDENT_ROLE = 5;
+    const BUSINESS_ROLE = 3;
+    const ADMIN_ROLE = 1;
+    const STAFF_ROLE = 2;
     public static function getRoleNamebyRoleId($role_id)
     {
         if($role_id == 1)

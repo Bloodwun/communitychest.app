@@ -49,6 +49,7 @@
                             </div>
                             <div class="p-2">
                                     <form class = "form-horizontal" method="POST" action="{{ route('login.submit') }}">
+                                        <input type="hidden" name="role_id" value="{{$role_id??''}}">
                                     @csrf
                                         <div class="mb-3">
                                             <label for="email" class="form-label">Email</label>
@@ -77,10 +78,8 @@
                                         <div class="mt-3 d-grid">
                                             <button class="btn btn-primary waves-effect waves-light" type="submit">Log In</button>
                                         </div>
-            
-
                                         <div class="mt-4 text-center">
-                                            <a href="{{route('register.form')}}" class="text-muted"><i class="mdi mdi-lock me-1"></i> Register Now!</a>
+                                            <a href="{{route('register.form',['role_id' => $role_id])}}" class="text-muted"><i class="mdi mdi-lock me-1"></i> Register Now!</a>
                                         </div>
                                         <div class="mt-4 text-center">
                                             <!-- <a href="auth-recoverpw.html" class="text-muted"><i class="mdi mdi-lock me-1"></i> Forgot your password?</a> -->

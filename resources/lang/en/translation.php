@@ -1,6 +1,7 @@
 <?php
 
 return [
+  "Add_New" => 'Add New',
   "Menu" => "Menu",
   "Dashboards" => "Dashboards",
   "Default" => "Default",
@@ -188,5 +189,6 @@ return [
   'warmup_setting'  => 'warm up setting',
   'warmup'          => 'warm up',
   'inbox'           => 'Inbox',
+  'list'           => 'List',
 
 ];

@@ -16,15 +16,30 @@
                         <span key="t-dashboards">@lang('translation.Dashboards')</span>
                     </a>
                 </li>
-                <!-- <li>
+                @if(Auth::user()->role_id == App\Models\Role::BUSINESS_ROLE)
+                <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bxs-user-detail"></i>
-                        <span key="t-contacts">@lang('translation.Contacts')</span>
+                        <span key="t-contacts">@lang('translation.Register')</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="#" key="t-profile">@lang('translation.Profile')</a></li>
+                    <li><a href="{{route('business.register')}}" key="t-profile">@lang('translation.Add_New')</a></li>
+                    <li><a href="{{route('business.user.list')}}" key="t-profile">@lang('translation.list')</a></li>
                     </ul>
-                </li> -->
+                </li>
+                @endif
+                @if(Auth::user()->role_id == App\Models\Role::STAFF_ROLE)
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bxs-user-detail"></i>
+                        <span key="t-contacts">@lang('translation.Register')</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                    <li><a href="{{route('staff.register')}}" key="t-profile">@lang('translation.Add_New')</a></li>
+                    <li><a href="{{route('staff.user.list')}}" key="t-profile">@lang('translation.list')</a></li>
+                    </ul>
+                </li>
+                @endif
             </ul>
         </div>
         <!-- Sidebar -->
