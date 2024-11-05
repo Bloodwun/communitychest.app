@@ -40,29 +40,29 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         // Assuming 'role_id' is a column in the users table
-        if ($user->role_id !== $request->role_id) { // Replace '1' with the role ID you want to check
-            \Auth::logout();
-            $request->session()->invalidate();
-            $request->session()->regenerateToken();
+        // if ($user->role_id) { // Replace '1' with the role ID you want to check
+        //     \Auth::logout();
+        //     $request->session()->invalidate();
+        //     $request->session()->regenerateToken();
 
-            return redirect('/')->withErrors(['Your account does not have the correct role to access this application.']);
-        }
+        //     return redirect('/')->withErrors(['Your account does not have the correct role to access this application.']);
+        // }
 
         // Continue with the default redirect
         return redirect()->intended($this->redirectPath());
     }
     protected function guard()
-{
-    return \Auth::guard('web');
-}
- /**
+    {
+        return \Auth::guard('web');
+    }
+    /**
      * Log the user out of the application.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
      */
     public function logout(Request $request)
-    { 
+    {
         $this->guard()->logout();
 
         $request->session()->invalidate();

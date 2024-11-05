@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -76,25 +77,30 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user =  User::create([
+        // dd($data);
+
+        // Ensure 'role_id' is set to Resident by default if not provided
+        $data['role_id'] = $data['role_id'] ?? Role::RESIDENT_ROLE;
+        $user = User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'middle_name' => $data['middle_name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'role_id' => $data['role_id'],
+            'role' => Role::getRoleNamebyRoleId($data['role_id']),
             'user_name' => $data['user_name'],
             'city' => $data['city'],
             'state' => $data['state'],
             'zip_code' => $data['zip_code'],
             'phone_number' => $data['phone_number'],
             'address' => $data['address'],
-            'referral_code' => $data['referral_code']??null,
-            'parent_user_id' =>(Auth::user() != null ) ? Auth::user()->id : null
+            'referral_code' => $data['referral_code'] ?? null,
+            'parent_user_id' => (Auth::user() != null) ? Auth::user()->id : null
 
         ]);
-			session()->flash('success', 'Registeration Successfully.');
-        
+        session()->flash('success', 'Registeration Successfully.');
+
         return $user;
     }
 }

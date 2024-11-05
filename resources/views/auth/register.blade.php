@@ -4,7 +4,8 @@
     @lang('translation.Register')
 @endsection
 @section('css')
-    <link href="{{ URL::asset('/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ URL::asset('/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.css') }}" rel="stylesheet"
+        type="text/css">
 @endsection
 @section('body')
 
@@ -12,7 +13,7 @@
     @endsection
 
     @section('content')
-    @include('admin.components.error_messages')
+        @include('admin.components.error_messages')
 
         <div class="account-pages my-5 pt-sm-5">
             <div class="container">
@@ -45,12 +46,15 @@
                                     </a>
                                 </div>
                                 <div class="p-2">
-                                    <form method="POST" class="form-horizontal" action="{{ route('register.submit') }}" enctype="multipart/form-data">
+                                    <form method="POST" class="form-horizontal" action="{{ route('register.submit') }}"
+                                        enctype="multipart/form-data">
                                         @csrf
                                         <div class="mb-3">
                                             <label for="first_name" class="form-label">First Name*</label>
-                                            <input type="text" class="form-control @error('first_name') is-invalid @enderror" id="first_name"
-                                            value="{{ old('first_name') }}" name="first_name" placeholder="Enter First Name" autofocus required>
+                                            <input type="text"
+                                                class="form-control @error('first_name') is-invalid @enderror"
+                                                id="first_name" value="{{ old('first_name') }}" name="first_name"
+                                                placeholder="Enter First Name" autofocus required>
                                             @error('first_name')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -59,8 +63,10 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="first_name" class="form-label">Middle Name*</label>
-                                            <input type="text" class="form-control @error('middle_name') is-invalid @enderror" id="middle_name"
-                                            value="{{ old('middle_name') }}" name="middle_name" placeholder="Enter Middle Name" autofocus required>
+                                            <input type="text"
+                                                class="form-control @error('middle_name') is-invalid @enderror"
+                                                id="middle_name" value="{{ old('middle_name') }}" name="middle_name"
+                                                placeholder="Enter Middle Name" autofocus required>
                                             @error('middle_name')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -69,8 +75,10 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="last_name" class="form-label">Last Name*</label>
-                                            <input type="text" class="form-control @error('last_name') is-invalid @enderror" id="last_name"
-                                            value="{{ old('last_name') }}" name="last_name" placeholder="Enter First Name" autofocus required>
+                                            <input type="text"
+                                                class="form-control @error('last_name') is-invalid @enderror" id="last_name"
+                                                value="{{ old('last_name') }}" name="last_name"
+                                                placeholder="Enter First Name" autofocus required>
                                             @error('last_name')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -79,8 +87,9 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="email" class="form-label">Email*</label>
-                                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
-                                            value="{{ old('email') }}" name="email" placeholder="Enter email" autofocus required>
+                                            <input type="email" class="form-control @error('email') is-invalid @enderror"
+                                                id="email" value="{{ old('email') }}" name="email"
+                                                placeholder="Enter email" autofocus required>
                                             @error('email')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -90,9 +99,10 @@
 
                                         <div class="mb-3">
                                             <label for="user_name" class="form-label">Username*</label>
-                                            <input type="text" class="form-control @error('user_name') is-invalid @enderror"
-                                            value="{{ old('user_name') }}" id="user_name" name="user_name" autofocus required
-                                                placeholder="Enter user Name">
+                                            <input type="text"
+                                                class="form-control @error('user_name') is-invalid @enderror"
+                                                value="{{ old('user_name') }}" id="user_name" name="user_name" autofocus
+                                                required placeholder="Enter user Name">
                                             @error('name')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -102,27 +112,26 @@
                                         <div class="mb-3">
                                             <label for="Role" class="form-label">Role*</label>
                                             <select class="form-control" name = "role_id">
-                                           
 
-                                            @if($role_id == 4)
-                                            {
-                                                <option value = "4">Realtor/LeaseAgent</option>
-                                            }
-                                            
-                                            @elseif($role_id == 3)
-                                            {
-                                                <option value = "3">Business</option>
-                                            }
-                                            @elseif($role_id == 2)
-                                            {
-                                                <option value = "2">Staff</option>
-                                            }
-                                            @elseif($role_id == 5)
-                                            {
-                                            <option selected value="5">Resident </option>
-                                            }
-                                            @endif
-                                        </select>
+
+                                                @if ($role_id == 4)
+                                                    {
+                                                    <option value = "4">Realtor/LeaseAgent</option>
+                                                    }
+                                                @elseif($role_id == 3)
+                                                    {
+                                                    <option value = "3">Business</option>
+                                                    }
+                                                @elseif($role_id == 2)
+                                                    {
+                                                    <option value = "2">Staff</option>
+                                                    }
+                                                @elseif($role_id == 5)
+                                                    {
+                                                    <option selected value="5">Resident </option>
+                                                    }
+                                                @endif
+                                            </select>
                                             @error('role')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -131,8 +140,9 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="state" class="form-label">State*</label>
-                                            <input type="text" class="form-control @error('state') is-invalid @enderror" id="state"
-                                            value="{{ old('state') }}" name="state" placeholder="Enter State" autofocus required>
+                                            <input type="text" class="form-control @error('state') is-invalid @enderror"
+                                                id="state" value="{{ old('state') }}" name="state"
+                                                placeholder="Enter State" autofocus required>
                                             @error('state')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -141,8 +151,9 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="city" class="form-label">City*</label>
-                                            <input type="text" class="form-control @error('city') is-invalid @enderror" id="city"
-                                            value="{{ old('city') }}" name="city" placeholder="Enter City" autofocus required>
+                                            <input type="text" class="form-control @error('city') is-invalid @enderror"
+                                                id="city" value="{{ old('city') }}" name="city"
+                                                placeholder="Enter City" autofocus required>
                                             @error('city')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -151,8 +162,10 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="zipcode" class="form-label">Zip Code*</label>
-                                            <input type="text" class="form-control @error('zipcode') is-invalid @enderror" id="zipcode"
-                                            value="{{ old('zipcode') }}" name="zip_code" placeholder="Enter Zip Code" autofocus required>
+                                            <input type="text"
+                                                class="form-control @error('zipcode') is-invalid @enderror" id="zipcode"
+                                                value="{{ old('zipcode') }}" name="zip_code"
+                                                placeholder="Enter Zip Code" autofocus required>
                                             @error('zipcode')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -161,8 +174,10 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="phonenumber" class="form-label">Phone number*</label>
-                                            <input type="text" class="form-control @error('phonenumber') is-invalid @enderror" id="phonenumber"
-                                            value="{{ old('phonenumber') }}" name="phone_number" placeholder="Enter Phone number" autofocus required>
+                                            <input type="text"
+                                                class="form-control @error('phonenumber') is-invalid @enderror"
+                                                id="phonenumber" value="{{ old('phonenumber') }}" name="phone_number"
+                                                placeholder="Enter Phone number" autofocus required>
                                             @error('phonenumber')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -171,8 +186,10 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="address" class="form-label">Address*</label>
-                                            <input type="text" class="form-control @error('address') is-invalid @enderror" id="address"
-                                            value="{{ old('address') }}" name="address" placeholder="Enter Address" autofocus required>
+                                            <input type="text"
+                                                class="form-control @error('address') is-invalid @enderror" id="address"
+                                                value="{{ old('address') }}" name="address" placeholder="Enter Address"
+                                                autofocus required>
                                             @error('address')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -181,9 +198,11 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="userpassword" class="form-label">Password*</label>
-                                            <input type="password" class="form-control @error('password') is-invalid @enderror" id="userpassword" name="password"
-                                                placeholder="Enter password" autofocus required>
-                                                @error('password')
+                                            <input type="password"
+                                                class="form-control @error('password') is-invalid @enderror"
+                                                id="userpassword" name="password" placeholder="Enter password" autofocus
+                                                required>
+                                            @error('password')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -192,8 +211,11 @@
 
                                         <div class="mb-3">
                                             <label for="confirmpassword" class="form-label">Confirm Password*</label>
-                                            <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" id="confirmpassword" name="password_confirmation"
-                                            name="password_confirmation" placeholder="Enter Confirm password" autofocus required>
+                                            <input type="password"
+                                                class="form-control @error('password_confirmation') is-invalid @enderror"
+                                                id="confirmpassword" name="password_confirmation"
+                                                name="password_confirmation" placeholder="Enter Confirm password"
+                                                autofocus required>
                                             @error('password_confirmation')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -201,27 +223,27 @@
                                             @enderror
                                         </div>
                                         <!-- <div class="mb-3">
-                                            <label for="referral_code" class="form-label">Referral_Code*</label>
-                                            <input type="text" class="form-control @error('referral_code') is-invalid @enderror" id="referral_code"
-                                            value="{{ old('referral_code') }}" name="referral_code" placeholder="Enter Referral Code" autofocus>
-                                            @error('referral_code')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div> -->
-                                        
+                                                    <label for="referral_code" class="form-label">Referral_Code*</label>
+                                                    <input type="text" class="form-control @error('referral_code') is-invalid @enderror" id="referral_code"
+                                                    value="{{ old('referral_code') }}" name="referral_code" placeholder="Enter Referral Code" autofocus>
+                                                    @error('referral_code')
+        <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+    @enderror
+                                                </div> -->
+
 
                                         <div class="mt-4 d-grid">
                                             <button class="btn btn-primary waves-effect waves-light"
                                                 type="submit">Register</button>
                                         </div>
 
-                                  
+
 
                                         <div class="mt-4 text-center">
-                                            <p class="mb-0">By registering you agree to the Community Chest <a href="#"
-                                                    class="text-primary">Terms of Use</a></p>
+                                            <p class="mb-0">By registering you agree to the Community Chest <a
+                                                    href="#" class="text-primary">Terms of Use</a></p>
                                         </div>
                                     </form>
                                 </div>
@@ -231,12 +253,14 @@
                         <div class="mt-5 text-center">
 
                             <div>
-                                <p>Already have an account ? <a href="{{ url('/') }}" class="fw-medium text-primary">
+                                <p>Already have an account ? <a href="{{ url('/') }}"
+                                        class="fw-medium text-primary">
                                         Login</a> </p>
-                                <p>© <script>
+                                <p>©
+                                    <script>
                                         document.write(new Date().getFullYear())
-
-                                    </script> Community Chest. Crafted with <i class="mdi mdi-heart text-danger"></i> by Web_Xoft
+                                    </script> Community Chest. Crafted with <i
+                                        class="mdi mdi-heart text-danger"></i> by Web_Xoft
                                 </p>
                             </div>
                         </div>
@@ -245,8 +269,7 @@
                 </div>
             </div>
         </div>
-
     @endsection
-@section('script')
-    <script src="{{ URL::asset('/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
-@endsection
+    @section('script')
+        <script src="{{ URL::asset('/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
+    @endsection

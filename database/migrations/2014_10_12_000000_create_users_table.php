@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('middle_name')->nullable();
             $table->string('email')->unique();
             $table->string('user_name')->unique();
-            $table->string('role')->default("male");
+            $table->string('role');
             $table->string('zip_code')->nullable();
             $table->string('state')->nullable();
             $table->string('city')->nullable();
@@ -30,7 +30,7 @@ class CreateUsersTable extends Migration
             $table->string('role_id')->default(2);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
-			 $table->rememberToken();
+            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -44,4 +44,5 @@ class CreateUsersTable extends Migration
     {
         Schema::dropIfExists('users');
     }
-};
+}
+;
