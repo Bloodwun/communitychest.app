@@ -18,12 +18,15 @@ class Role extends Model
         'name',
         'status',
     ];
-    const RESIDENT_ROLE = 5;
-    const BUSINESS_ROLE = 3;
+    
     const ADMIN_ROLE = 1;
     const STAFF_ROLE = 2;
+    const BUSINESS_ROLE = 3;
+    const RESIDENT_ROLE = 5;
+    const OWNER_ROLE = 6;
     public static function getRoleNamebyRoleId($role_id)
     {
+       
         if ($role_id == 1) {
             return 'Admin';
         }
@@ -38,6 +41,8 @@ class Role extends Model
         }
         if ($role_id == 5) {
             return 'New Resident';
+        }if ($role_id == 6) {
+            return 'owner';
         } else {
             return '';
         }
