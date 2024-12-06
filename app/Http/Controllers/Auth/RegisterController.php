@@ -100,7 +100,6 @@ class RegisterController extends Controller
 
         ]);
         session()->flash('success', 'Registeration Successfully.');
-
         return $user;
     }
 }

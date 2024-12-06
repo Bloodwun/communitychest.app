@@ -3,6 +3,43 @@
         <div class="d-flex">
             <!-- LOGO -->
             <div class="navbar-brand-box">
+                @if(Auth::user()->role_id == App\Models\Role::BUSINESS_ROLE)
+                <a href="{{route('business.dashboard')}}" class="logo logo-dark">
+                    <span class="logo-sm">
+                        <img src="{{ asset('/public/assets/images/logo-light.png') }}" alt="" style="width: 160px; height: 55px;">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="{{ asset('/public/assets/images/logo-light.png') }}" alt="" style="width: 160px; height: 55px;">
+                    </span>
+                </a>
+
+                <a href="{{route('business.dashboard')}}" class="logo logo-light">
+                    <span class="logo-sm">
+                        <img src="{{ asset('/public/assets/images/logo-light.png') }}" alt="" style="width: 160px; height: 55px;">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="{{ asset('/public/assets/images/logo-light.png') }}" alt="" style="width: 160px; height: 55px;">
+                    </span>
+                </a>
+                @elseif(Auth::user()->role_id == App\Models\Role::OWNER_ROLE)
+                <a href="{{route('owner.dashboard')}}" class="logo logo-dark">
+                    <span class="logo-sm">
+                        <img src="{{ asset('/public/assets/images/logo-light.png') }}" alt="" style="width: 160px; height: 55px;">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="{{ asset('/public/assets/images/logo-light.png') }}" alt="" style="width: 160px; height: 55px;">
+                    </span>
+                </a>
+
+                <a href="{{route('owner.dashboard')}}" class="logo logo-light">
+                    <span class="logo-sm">
+                        <img src="{{ asset('/public/assets/images/logo-light.png') }}" alt="" style="width: 160px; height: 55px;">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="{{ asset('/public/assets/images/logo-light.png') }}" alt="" style="width: 160px; height: 55px;">
+                    </span>
+                </a>
+                @elseif(Auth::user()->role_id == App\Models\Role::RESIDENT_ROLE)
                 <a href="{{route('user.dashboard')}}" class="logo logo-dark">
                     <span class="logo-sm">
                         <img src="{{ asset('/public/assets/images/logo-light.png') }}" alt="" style="width: 160px; height: 55px;">
@@ -20,6 +57,43 @@
                         <img src="{{ asset('/public/assets/images/logo-light.png') }}" alt="" style="width: 160px; height: 55px;">
                     </span>
                 </a>
+                @elseif(Auth::user()->role_id == App\Models\Role::ADMIN_ROLE)
+                <a href="{{route('admin.dashboard')}}" class="logo logo-dark">
+                    <span class="logo-sm">
+                        <img src="{{ asset('/public/assets/images/logo-light.png') }}" alt="" style="width: 160px; height: 55px;">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="{{ asset('/public/assets/images/logo-light.png') }}" alt="" style="width: 160px; height: 55px;">
+                    </span>
+                </a>
+
+                <a href="{{route('admin.dashboard')}}" class="logo logo-light">
+                    <span class="logo-sm">
+                        <img src="{{ asset('/public/assets/images/logo-light.png') }}" alt="" style="width: 160px; height: 55px;">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="{{ asset('/public/assets/images/logo-light.png') }}" alt="" style="width: 160px; height: 55px;">
+                    </span>
+                </a>
+                @elseif(Auth::user()->role_id == App\Models\Role::PROPERTY_MANAGER_ROLE)
+                <a href="{{route('prop_manager.dashboard')}}" class="logo logo-dark">
+                    <span class="logo-sm">
+                        <img src="{{ asset('/public/assets/images/logo-light.png') }}" alt="" style="width: 160px; height: 55px;">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="{{ asset('/public/assets/images/logo-light.png') }}" alt="" style="width: 160px; height: 55px;">
+                    </span>
+                </a>
+
+                <a href="{{route('prop_manager.dashboard')}}" class="logo logo-light">
+                    <span class="logo-sm">
+                        <img src="{{ asset('/public/assets/images/logo-light.png') }}" alt="" style="width: 160px; height: 55px;">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="{{ asset('/public/assets/images/logo-light.png') }}" alt="" style="width: 160px; height: 55px;">
+                    </span>
+                </a>
+                @endif
             </div>
 
             <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect" id="vertical-menu-btn">

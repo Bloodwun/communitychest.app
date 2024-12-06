@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Community;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommunityController extends Controller
 {
@@ -14,7 +16,8 @@ class CommunityController extends Controller
      */
     public function index()
     {
-        //
+        $all_admin = User::where('role_id', 1)->where('id', '!=', Auth::id())->get();
+        return view('owner.admin.index', compact('all_admin'));
     }
 
     /**

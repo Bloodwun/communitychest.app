@@ -54,17 +54,20 @@
                                     <form class = "form-horizontal" method="POST" action="{{ route('login.submit') }}">
                                         {{-- <input type="text" name="role_id" value="{{ $role_id ?? '' }}"> --}}
                                         @csrf
-                                        <div class="mb-3">
+                                        <div class="">
                                             <label for="email" class="form-label">Email</label>
                                             <input type="text" class="form-control" id="username"
-                                                placeholder="Enter username" name = "email">
+                                                placeholder="Enter email" name = "email">
+                                        </div>
+                                        <div class="mb-1">
+                                            <a href="{{ route('username.request') }}">Forgot Username?</a>
                                         </div>
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
-                                        <div class="mb-3">
+                                        <div class="">
                                             <label class="form-label">Password</label>
                                             <div class="input-group auth-pass-inputgroup">
                                                 <input type="password" name = "password"class="form-control"
@@ -74,7 +77,9 @@
                                                         class="mdi mdi-eye-outline"></i></button>
                                             </div>
                                         </div>
-
+                                        <div class="mb-1">
+                                            <a href="{{ route('password.request') }}">Forgot your password?</a>
+                                        </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" id="remember-check">
                                             <label class="form-check-label" for="remember-check">
@@ -86,12 +91,10 @@
                                             <button class="btn btn-primary waves-effect waves-light" type="submit">Log
                                                 In</button>
                                         </div>
+                                     
                                         <div class="mt-4 text-center">
                                             <a href="{{ route('register.form', ['role_id' => $role_id]) }}"
                                                 class="text-muted"><i class="mdi mdi-lock me-1"></i> Register Now!</a>
-                                        </div>
-                                        <div class="mt-4 text-center">
-                                            <!-- <a href="auth-recoverpw.html" class="text-muted"><i class="mdi mdi-lock me-1"></i> Forgot your password?</a> -->
                                         </div>
                                     </form>
                                 </div>

@@ -30,7 +30,7 @@ class User extends Authenticatable
         'referral_code',
         'address',
         'email',
-        'refresh_token',
+        'remember_token',
         'role_id',
         'password',
         'state',
@@ -38,6 +38,10 @@ class User extends Authenticatable
         'parent_user_id'
     ];
 
+    public function parent()
+    {
+        return $this->belongsTo(self::class, 'parent_user_id', 'id');
+    }
     /**
      * Indicates if the model's ID is auto-incrementing.
      *
@@ -65,6 +69,8 @@ class User extends Authenticatable
         'created_at' => 'datetime:Y-m-d H:i:s'
 
     ];
+
+    
     public function community()
     {
         return $this->hasOne(Community::class, 'discord_id', 'id');
@@ -118,4 +124,9 @@ class User extends Authenticatable
         else
             return "Other";
     }
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'business_id');
+    }
+    
 }

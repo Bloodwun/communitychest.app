@@ -119,21 +119,35 @@ public function users(Request $request)
     public function alluser(Request $request)
 	{
 
-		$all_user = User::all();
+        $all_user = User::where('id', '!=', Auth::id())->get();
 		return view('owner.users.index',compact('all_user'));
 	}
 
-    public function store(Request $request) {
-        // Validate and store the new user
+    public function store(Request $request)
+    {
+     
         $validated = $request->validate([
             'first_name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:8|confirmed',
-            // Add other fields as needed
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6|confirmed',
+            'role' => 'required',
+            'city' => 'nullable|string|max:255',
+            'state' => 'nullable|string|max:255',
+            'address' => 'nullable|string|max:255',
+            'zip_code' => 'nullable|string|max:10',
         ]);
-    
-        User::create($validated); // Create user
-        return redirect()->route('owner.user.list')->with('success', 'User created successfully.');
+
+        User::create([
+            'first_name' => $validated['first_name'],
+            'email' => $validated['email'],
+            'password' => bcrypt($validated['password']),
+            'city' => $validated['city'],
+            'state' => $validated['state'],
+            'address' => $validated['address'],
+            'zip_code' => $validated['zip_code'],
+        ]);
+
+        return redirect()->route('owner.admin.index')->with('success', 'Admin created successfully.');
     }
     
     public function edit($id) {
@@ -143,41 +157,20 @@ public function users(Request $request)
         
         return view('owner.users.edit', compact('user','roles')); // Return a view for editing
     }
-    
     public function update(Request $request, $id) {
         // Find the user by ID
         $user = User::findOrFail($id);
     
-        // Validate the fields
-        $validated = $request->validate([
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'middle_name' => 'nullable|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $id,
-            'user_name' => 'required|string|max:255|unique:users,user_name,' . $id,
-            'role_id' => 'required|exists:admin_roles,id', // Ensure role exists
-            'zip_code' => 'nullable|string|max:20',
-            'state' => 'nullable|string|max:100',
-            'city' => 'nullable|string|max:100',
-            'phone_number' => 'nullable|string|max:20',
-            'address' => 'nullable|string|max:255',
-            'referral_code' => 'nullable|string|max:255',
-            'email_verified_at' => 'nullable|date',
-            'password' => 'nullable|string|min:8|confirmed', // Password confirmation
-            'remember_token' => 'nullable|string|max:100',
-            'parent_user_id' => 'nullable|exists:users,id', // Parent user validation (optional)
-        ]);
-    
-        // If password is provided, hash it before updating
+        // Check if password is provided, hash it before updating
         if ($request->has('password') && $request->password) {
-            $validated['password'] = bcrypt($request->password);
+            $request->merge(['password' => bcrypt($request->password)]);
         }
     
-        // Update the user with the validated data
-        $user->update($validated);
+        // Update the user with the request data
+        $user->update($request->all());
     
         // Redirect back to the user list with a success message
-        return redirect()->route('owner.user.list')->with('success', 'User updated successfully.');
+        return redirect()->route('all.admin')->with('success', 'User updated successfully.');
     }
     
     
